@@ -1,7 +1,12 @@
-.c-App {
+.c-App__container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto; }
+
+.c-App__header {
+  height: 150px;
+  padding: 20px;
   text-align: center; }
-  .c-App__header {
-    height: 150px;
-    padding: 20px; }
-  .c-App__title {
-    font-size: 1.5em; }
+
+.c-App__title {
+  font-size: 1.5em; }
