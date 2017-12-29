@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
 class AccountInfo extends Component {
+  componentWillMount = () => {
+    this.props.onMount('Account Information', 'Next')
+  }
 
   render() {
     const { value, onChange } = this.props
