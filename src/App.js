@@ -3,9 +3,6 @@ import FormContainer from './components/FormContainer'
 import './App.css';
 
 class App extends Component {
-  state = {}
-
-  handleChange = (e, { value }) => this.setState({ value })
 
   render() {
     return (
@@ -14,7 +11,7 @@ class App extends Component {
           <header className="c-App__header">
             <h1 className="c-App__title">Bank Account Application</h1>
           </header>
-          <FormContainer value={this.state.value} onChange={this.handleChange}/>
+          <FormContainer/>
         </div>
       </div>
     );
