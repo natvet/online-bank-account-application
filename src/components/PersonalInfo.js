@@ -8,10 +8,7 @@ const options = [
 ]
 
 class PersonalInfo extends Component {
-  componentWillMount = () => {
-    this.props.onMount('Personal Information', 'Next')
-  }
-
+  
   render() {
     return (
       <div>

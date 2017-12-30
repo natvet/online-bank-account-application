@@ -12,7 +12,7 @@ class App extends Component {
       <div className="c-App">
         <div className="c-App__container">
           <header className="c-App__header">
-            <h1 className="c-App__title">Online bank account application</h1>
+            <h1 className="c-App__title">Bank Account Application</h1>
           </header>
           <FormContainer value={this.state.value} onChange={this.handleChange}/>
         </div>

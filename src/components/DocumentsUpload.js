@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
 class DocumentsUpload extends Component {
-  componentWillMount = () => {
-    this.props.onMount('Documents Upload', 'Submit Application')
-  }
 
   render() {
     return (

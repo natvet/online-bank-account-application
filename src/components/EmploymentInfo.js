@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
 class EmploymentInfo extends Component {
-  componentWillMount = () => {
-    this.props.onMount('Employment Information', 'Next')
-  }
 
   render() {
     return (
