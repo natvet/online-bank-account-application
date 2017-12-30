@@ -1,11 +1,13 @@
-.c-App__container {
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto; }
-
-.c-App__header {
-  padding: 20px;
-  text-align: center; }
-
-.c-App__title {
-  font-size: 1.5em; }
+.c-App {
+  height: 100%;
+  background-color: #e1e2e4;
+  color: rgba(0, 0, 0, 0.85); }
+  .c-App__container {
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto; }
+    @media all and (min-width: 48em) {
+      .c-App__container {
+        padding: 20px; } }
+  .c-App__title {
+    font-size: 1.5rem; }
