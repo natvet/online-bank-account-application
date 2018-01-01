@@ -5,6 +5,12 @@ import Steps from './components/Steps'
 import './App.css';
 
 class App extends Component {
+   state={
+    activeView: 0
+  }
+
+  handleNext = () => this.setState({activeView: this.state.activeView + 1})
+  handleBack = () => this.setState({activeView: this.state.activeView - 1})
 
   render() {
     return (
@@ -14,8 +20,14 @@ class App extends Component {
             <Logo/>
             <h1 className='c-App__title'>Personal Account Application</h1>
           </header>
-          <Steps/>
-          <FormContainer/>
+          <Steps
+            activeView={this.state.activeView}
+          />
+          <FormContainer
+            onNext={this.handleNext}
+            onBack={this.handleBack}
+            activeView={this.state.activeView}
+          />
         </div>
       </div>
     );

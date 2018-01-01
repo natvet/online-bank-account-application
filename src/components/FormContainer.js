@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Card, Button } from 'semantic-ui-react';
+import Terms from './Terms';
 import PersonalInfo from './PersonalInfo';
 import EmploymentInfo from './EmploymentInfo';
 import AccountInfo from './AccountInfo';
@@ -8,7 +9,6 @@ import './FormContainer.css';
 
 class FormContainer extends Component {
   state={
-    activeView: 0,
     title: '',
     firstName: '',
     middleName: '',
@@ -29,17 +29,20 @@ class FormContainer extends Component {
   }
 
   handleNextClick = () => {
-    const { activeView } = this.state
-    if((activeView === 0 && this.isPersonalInfoValid()) ||
-      (activeView === 1 && this.isEmploymentInfoValid()) ||
-      (activeView === 2 && this.isAccountInfoValid())) {
-      this.setState({activeView: this.state.activeView + 1})
+    const { activeView } = this.props
+    if((activeView === 0 && this.isTermsConsentValid()) ||
+      (activeView === 1 && this.isPersonalInfoValid()) ||
+      (activeView === 2 && this.isEmploymentInfoValid()) ||
+      (activeView === 3 && this.isAccountInfoValid())) {
+      this.props.onNext()
     } else {
       this.setState({showError: true})
     }
   }
-  handleBackClick = () => this.setState({activeView: this.state.activeView - 1})
+  handleBackClick = () => this.props.onBack()
   handleInputChange = (name, value) => this.setState({[name]: value})
+  handleCheckboxChange = (name) => this.setState({[name]: !this.state[name]})
+  isTermsConsentValid = () => this.state.terms
   isPersonalInfoValid = () => (
       this.state.title &&
       this.state.firstName &&
@@ -66,8 +69,17 @@ class FormContainer extends Component {
   )
 
   render() {
-    const { activeView } = this.state
+    const { activeView } = this.props
     const views = [
+      {
+        component:  <Terms 
+                      onChange={this.handleCheckboxChange}
+                      terms={this.state.terms}
+                    />,
+        header: 'Terms & Conditions',
+        button: 'Next',
+        color: 'pink'
+      },
       {
         component:  <PersonalInfo 
                       onChange={this.handleInputChange}
@@ -83,7 +95,7 @@ class FormContainer extends Component {
                     />,
         header: 'Personal Information',
         button: 'Next',
-        color: 'pink'
+        color: 'yellow'
       },
       {
         component:  <EmploymentInfo
@@ -123,7 +135,7 @@ class FormContainer extends Component {
           <Form>
             {views[activeView].component}
             <Button floated='right' onClick={this.handleNextClick}>{views[activeView].button}</Button>
-            {this.state.activeView !== 0 ? <Button floated='right' onClick={this.handleBackClick}>Back</Button> : null}
+            {activeView !== 0 ? <Button floated='right' onClick={this.handleBackClick}>Back</Button> : null}
           </Form>
         </Card.Content>
       </Card>

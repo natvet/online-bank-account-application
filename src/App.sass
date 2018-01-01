@@ -1,13 +1,16 @@
 .c-App
+  text-align: center
   height: 100%;
   background-color: #e1e2e4;
   min-height: 100vh;
   color: rgba(0,0,0,.85);
+  @media all and (min-width: 48em)
+    text-align: left;
   &__container
-    padding: 10px
     max-width: 1200px
     margin: 0 auto
+    padding: 20px 0;
     @media all and (min-width: 48em)
-      padding: 20px
+      padding: 20px;
   &__title
-    font-size: 1.5rem
+    font-size: 1.5rem;
