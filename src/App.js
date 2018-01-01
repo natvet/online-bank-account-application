@@ -4,11 +4,37 @@ import Logo from './components/Logo'
 import Steps from './components/Steps'
 import './App.css';
 
+const initialModel = {
+  activeView: 0,
+  title: '',
+  firstName: '',
+  middleName: '',
+  lastName: '',
+  homePhone: '',
+  mobilePhone: '',
+  emailAddress: '',
+  address: '',
+  ssn: '',
+  employersName: '',
+  employersAddress: '',
+  workPhone: '',
+  jobPosition: '',
+  type: '',
+  purpose: '',
+  source: '',
+  whereFrom: ''
+}
+
 class App extends Component {
-   state={
-    activeView: 0
+
+  componentWillMount = () => {
+    const updatedState = JSON.parse(localStorage.getItem('progress')) || initialModel
+    this.setState({...updatedState})
   }
 
+  handleSaveClick = () => localStorage.setItem('progress', JSON.stringify(this.state))
+  handleInputChange = (name, value) => this.setState({[name]: value})
+  handleCheckboxChange = (name) => this.setState({[name]: !this.state[name]})
   handleNext = () => this.setState({activeView: this.state.activeView + 1})
   handleBack = () => this.setState({activeView: this.state.activeView - 1})
 
@@ -24,9 +50,13 @@ class App extends Component {
             activeView={this.state.activeView}
           />
           <FormContainer
+            onSave={this.handleSaveClick}
             onNext={this.handleNext}
             onBack={this.handleBack}
             activeView={this.state.activeView}
+            onInputChange={this.handleInputChange}
+            onCheckboxChange={this.handleCheckboxChange}
+            {...this.state}
           />
         </div>
       </div>

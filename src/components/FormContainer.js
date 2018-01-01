@@ -8,25 +8,7 @@ import DocumentsUpload from './DocumentsUpload';
 import './FormContainer.css';
 
 class FormContainer extends Component {
-  state={
-    title: '',
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    homePhone: '',
-    mobilePhone: '',
-    emailAddress: '',
-    address: '',
-    ssn: '',
-    employersName: '',
-    employersAddress: '',
-    workPhone: '',
-    jobPosition: '',
-    type: '',
-    purpose: '',
-    source: '',
-    whereFrom: ''
-  }
+  state={}
 
   handleNextClick = () => {
     const { activeView } = this.props
@@ -41,41 +23,65 @@ class FormContainer extends Component {
     }
   }
   handleBackClick = () => this.props.onBack()
-  handleInputChange = (name, value) => this.setState({[name]: value})
-  handleCheckboxChange = (name) => this.setState({[name]: !this.state[name]})
-  isTermsConsentValid = () => this.state.terms
+  isTermsConsentValid = () => this.props.terms
   isPersonalInfoValid = () => (
-      this.state.title &&
-      this.state.firstName &&
-      this.state.lastName &&
-      this.state.homePhone &&
-      this.state.mobilePhone &&
-      this.state.emailAddress &&
-      this.state.address &&
-      this.state.ssn
+      this.props.title &&
+      this.props.firstName &&
+      this.props.lastName &&
+      this.props.homePhone &&
+      this.props.mobilePhone &&
+      this.props.emailAddress &&
+      this.props.address &&
+      this.props.ssn
     )
 
   isEmploymentInfoValid = () => (
-    this.state.employersName &&
-    this.state.employersAddress &&
-    this.state.workPhone &&
-    this.state.jobPosition
+    this.props.employersName &&
+    this.props.employersAddress &&
+    this.props.workPhone &&
+    this.props.jobPosition
   )
 
   isAccountInfoValid = () => (
-    this.state.type &&
-    this.state.purpose &&
-    this.state.source &&
-    this.state.whereFrom
+    this.props.type &&
+    this.props.purpose &&
+    this.props.source &&
+    this.props.whereFrom
   )
 
   render() {
-    const { activeView } = this.props
+    const { 
+      activeView,
+      onSave,
+      onBack,
+      onInputChange,
+      onCheckboxChange,
+      terms,
+      title,
+      firstName,
+      middleName,
+      lastName,
+      homePhone,
+      mobilePhone,
+      emailAddress,
+      address,
+      ssn,
+      employersName,
+      employersAddress,
+      workPhone,
+      jobPosition,
+      type,
+      purpose,
+      source,
+      whereFrom,
+      utilityBill,
+      securityNumber
+    } = this.props
     const views = [
       {
         component:  <Terms 
-                      onChange={this.handleCheckboxChange}
-                      terms={this.state.terms}
+                      onChange={onCheckboxChange}
+                      terms={terms}
                       showError={this.state.showError}
                     />,
         header: 'Terms & Conditions',
@@ -84,16 +90,16 @@ class FormContainer extends Component {
       },
       {
         component:  <PersonalInfo 
-                      onChange={this.handleInputChange}
-                      title={this.state.title}
-                      firstName={this.state.firstName}
-                      middleName={this.state.middleName}
-                      lastName={this.state.lastName}
-                      homePhone={this.state.homePhone}
-                      mobilePhone={this.state.mobilePhone}
-                      emailAddress={this.state.emailAddress}
-                      address={this.state.address}
-                      ssn={this.state.ssn}
+                      onChange={onInputChange}
+                      title={title}
+                      firstName={firstName}
+                      middleName={middleName}
+                      lastName={lastName}
+                      homePhone={homePhone}
+                      mobilePhone={mobilePhone}
+                      emailAddress={emailAddress}
+                      address={address}
+                      ssn={ssn}
                       showError={this.state.showError}
                     />,
         header: 'Personal Information',
@@ -102,11 +108,11 @@ class FormContainer extends Component {
       },
       {
         component:  <EmploymentInfo
-                      onChange={this.handleInputChange}
-                      employersName={this.state.employersName}
-                      employersAddress={this.state.employersAddress}
-                      workPhone={this.state.workPhone}
-                      jobPosition={this.state.jobPosition}
+                      onChange={onInputChange}
+                      employersName={employersName}
+                      employersAddress={employersAddress}
+                      workPhone={workPhone}
+                      jobPosition={jobPosition}
                       showError={this.state.showError}
                     />,
         header: 'Employment Information',
@@ -115,11 +121,11 @@ class FormContainer extends Component {
       },
       {
         component:  <AccountInfo
-                      onChange={this.handleInputChange}
-                      type={this.state.type}
-                      purpose={this.state.purpose}
-                      source={this.state.source}
-                      whereFrom={this.state.whereFrom}
+                      onChange={onInputChange}
+                      type={type}
+                      purpose={purpose}
+                      source={source}
+                      whereFrom={whereFrom}
                       showError={this.state.showError}
                     />,
         header: 'Account Information',
@@ -128,9 +134,9 @@ class FormContainer extends Component {
       },
       {
         component:  <DocumentsUpload
-                      onChange={this.handleInputChange}
-                      utilityBill={this.state.utilityBill}
-                      securityNumber={this.state.securityNumber}
+                      onChange={onInputChange}
+                      utilityBill={utilityBill}
+                      securityNumber={securityNumber}
                       showError={this.state.showError}
                     />,
         header: 'Documents Upload',
@@ -150,8 +156,9 @@ class FormContainer extends Component {
         : null}
           <Form>
             {views[activeView].component}
+            <Button floated='left' onClick={onSave}>Save</Button>
             <Button floated='right' onClick={this.handleNextClick}>{views[activeView].button}</Button>
-            {activeView !== 0 ? <Button floated='right' onClick={this.handleBackClick}>Back</Button> : null}
+            {activeView !== 0 ? <Button floated='right' onClick={onBack}>Back</Button> : null}
           </Form>
         </Card.Content>
       </Card>
