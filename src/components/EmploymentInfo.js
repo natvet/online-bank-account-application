@@ -14,6 +14,7 @@ class EmploymentInfo extends Component {
           placeholder='Employers Name'
           value={this.props.employersName}
           onChange={this.handleInputChange}
+          error={this.props.showError && !this.props.employersName}
         />
         <Form.Input
           label='Employers Address'
@@ -21,6 +22,7 @@ class EmploymentInfo extends Component {
           placeholder='Employers Address'
           value={this.props.employersAddress}
           onChange={this.handleInputChange}
+          error={this.props.showError && !this.props.employersAddress}
         />
         <Form.Group widths='equal'>
           <Form.Input
@@ -29,6 +31,7 @@ class EmploymentInfo extends Component {
             placeholder='Work Phone'
             value={this.props.workPhone}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.workPhone}
           />
           <Form.Input
             label='Job Position'
@@ -36,6 +39,7 @@ class EmploymentInfo extends Component {
             placeholder='Job Position'
             value={this.props.jobPosition}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.jobPosition}
           />
         </Form.Group>
       </div>

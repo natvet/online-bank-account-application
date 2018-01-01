@@ -12,7 +12,9 @@ class Terms extends Component {
           label='I agree to the Terms and Conditions'
           name='terms'
           checked={this.props.terms}
-          onChange={this.handleInputChange} />
+          onChange={this.handleInputChange}
+          error={this.props.showError && !this.props.terms}
+        />
       </div>
     );
   }

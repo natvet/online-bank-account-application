@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Card, Button } from 'semantic-ui-react';
+import { Form, Card, Button, Message } from 'semantic-ui-react';
 import Terms from './Terms';
 import PersonalInfo from './PersonalInfo';
 import EmploymentInfo from './EmploymentInfo';
@@ -35,6 +35,7 @@ class FormContainer extends Component {
       (activeView === 2 && this.isEmploymentInfoValid()) ||
       (activeView === 3 && this.isAccountInfoValid())) {
       this.props.onNext()
+      this.setState({showError: false})
     } else {
       this.setState({showError: true})
     }
@@ -75,6 +76,7 @@ class FormContainer extends Component {
         component:  <Terms 
                       onChange={this.handleCheckboxChange}
                       terms={this.state.terms}
+                      showError={this.state.showError}
                     />,
         header: 'Terms & Conditions',
         button: 'Next',
@@ -92,6 +94,7 @@ class FormContainer extends Component {
                       emailAddress={this.state.emailAddress}
                       address={this.state.address}
                       ssn={this.state.ssn}
+                      showError={this.state.showError}
                     />,
         header: 'Personal Information',
         button: 'Next',
@@ -104,6 +107,7 @@ class FormContainer extends Component {
                       employersAddress={this.state.employersAddress}
                       workPhone={this.state.workPhone}
                       jobPosition={this.state.jobPosition}
+                      showError={this.state.showError}
                     />,
         header: 'Employment Information',
         button: 'Next',
@@ -116,13 +120,19 @@ class FormContainer extends Component {
                       purpose={this.state.purpose}
                       source={this.state.source}
                       whereFrom={this.state.whereFrom}
+                      showError={this.state.showError}
                     />,
         header: 'Account Information',
         button: 'Next',
         color: 'orange'
       },
       {
-        component: <DocumentsUpload onChange={this.handleInputChange}/>,
+        component:  <DocumentsUpload
+                      onChange={this.handleInputChange}
+                      utilityBill={this.state.utilityBill}
+                      securityNumber={this.state.securityNumber}
+                      showError={this.state.showError}
+                    />,
         header: 'Documents Upload',
         button: 'Submit Application',
         color: 'olive'
@@ -132,6 +142,12 @@ class FormContainer extends Component {
       <Card className='c-FormContainer' color={views[activeView].color} fluid>
         <Card.Content>
         <Card.Header>{views[activeView].header}</Card.Header>
+        {this.state.showError ?
+          <Message
+            error
+            header='Please fill in all the required fileds'
+          />
+        : null}
           <Form>
             {views[activeView].component}
             <Button floated='right' onClick={this.handleNextClick}>{views[activeView].button}</Button>

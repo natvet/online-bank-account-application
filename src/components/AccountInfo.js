@@ -16,6 +16,7 @@ class AccountInfo extends Component {
             value='savings'
             checked={this.props.type === 'savings'}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.type}
           />
           <Form.Radio
             label='Deposit'
@@ -23,6 +24,7 @@ class AccountInfo extends Component {
             value='deposit'
             checked={this.props.type === 'deposit'}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.type}
           />
         </Form.Group>
         <Form.Input
@@ -31,6 +33,7 @@ class AccountInfo extends Component {
           placeholder='Purpose of bank account'
           value={this.props.purpose}
           onChange={this.handleInputChange}
+          error={this.props.showError && !this.props.purpose}
         />
         <Form.Input
           label='Where will the money come from?'
@@ -38,6 +41,7 @@ class AccountInfo extends Component {
           placeholder='Where will the money come from?'
           value={this.props.source}
           onChange={this.handleInputChange}
+          error={this.props.showError && !this.props.source}
         />
         <Form.TextArea
           label='How did you hear about us?'
@@ -45,6 +49,7 @@ class AccountInfo extends Component {
           placeholder='How did you hear about us?'
           value={this.props.whereFrom}
           onChange={this.handleInputChange}
+          error={this.props.showError && !this.props.whereFrom}
         />
       </div>
     );

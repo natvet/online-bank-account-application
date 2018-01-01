@@ -22,6 +22,7 @@ class PersonalInfo extends Component {
             placeholder='Title'
             value={this.props.title}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.title}
           />
           <Form.Input
             label='First name'
@@ -29,6 +30,7 @@ class PersonalInfo extends Component {
             placeholder='First name'
             value={this.props.firstName}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.firstName}
           />
           <Form.Input
             label='Middle name'
@@ -43,6 +45,7 @@ class PersonalInfo extends Component {
             placeholder='Last name'
             value={this.props.lastName}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.lastName}
           />
         </Form.Group>
         <Form.Group widths='equal'>
@@ -52,6 +55,7 @@ class PersonalInfo extends Component {
             placeholder='Home Phone'
             value={this.props.homePhone}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.homePhone}
           />
           <Form.Input
             label='Mobile Phone'
@@ -59,6 +63,7 @@ class PersonalInfo extends Component {
             placeholder='Mobile Phone'
             value={this.props.mobilePhone}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.mobilePhone}
           />
           <Form.Input
             label='Email address'
@@ -67,6 +72,7 @@ class PersonalInfo extends Component {
             placeholder='Email address'
             value={this.props.emailAddress}
             onChange={this.handleInputChange}
+            error={this.props.showError && !this.props.emailAddress}
           />
         </Form.Group>
         <Form.Input
@@ -75,6 +81,7 @@ class PersonalInfo extends Component {
           placeholder='Mailing Address'
           value={this.props.address}
           onChange={this.handleInputChange}
+          error={this.props.showError && !this.props.address}
         />
         <Form.Input
           label='Social Security Number'
@@ -82,6 +89,7 @@ class PersonalInfo extends Component {
           placeholder='Social Security Number'
           value={this.props.ssn}
           onChange={this.handleInputChange}
+          error={this.props.showError && !this.props.ssn}
         />
       </div>
     );
