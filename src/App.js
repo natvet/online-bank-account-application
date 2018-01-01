@@ -46,9 +46,7 @@ class App extends Component {
             <Logo/>
             <h1 className='c-App__title'>Personal Account Application</h1>
           </header>
-          <Steps
-            activeView={this.state.activeView}
-          />
+          {this.renderSteps()}
           <FormContainer
             onSave={this.handleSaveClick}
             onNext={this.handleNext}
@@ -62,6 +60,7 @@ class App extends Component {
       </div>
     );
   }
+  renderSteps = () => this.state.activeView !== 5 ? <Steps activeView={this.state.activeView}/> : null
 }
 
 export default App;

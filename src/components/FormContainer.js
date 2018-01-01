@@ -5,6 +5,7 @@ import PersonalInfo from './PersonalInfo';
 import EmploymentInfo from './EmploymentInfo';
 import AccountInfo from './AccountInfo';
 import DocumentsUpload from './DocumentsUpload';
+import Result from './Result';
 import './FormContainer.css';
 
 class FormContainer extends Component {
@@ -15,7 +16,8 @@ class FormContainer extends Component {
     if((activeView === 0 && this.isTermsConsentValid()) ||
       (activeView === 1 && this.isPersonalInfoValid()) ||
       (activeView === 2 && this.isEmploymentInfoValid()) ||
-      (activeView === 3 && this.isAccountInfoValid())) {
+      (activeView === 3 && this.isAccountInfoValid()) ||
+      (activeView === 4 && this.isDocumentsUploadValid())) {
       this.props.onNext()
       this.setState({showError: false})
     } else {
@@ -34,20 +36,23 @@ class FormContainer extends Component {
       this.props.address &&
       this.props.ssn
     )
-
   isEmploymentInfoValid = () => (
     this.props.employersName &&
     this.props.employersAddress &&
     this.props.workPhone &&
     this.props.jobPosition
   )
-
   isAccountInfoValid = () => (
     this.props.type &&
     this.props.purpose &&
     this.props.source &&
     this.props.whereFrom
   )
+  isDocumentsUploadValid = () => (
+    this.props.utilityBill &&
+    this.props.securityNumber
+  )
+  getResult = () => Math.random() >= 0.5
 
   render() {
     const { 
@@ -142,6 +147,13 @@ class FormContainer extends Component {
         header: 'Documents Upload',
         button: 'Submit Application',
         color: 'olive'
+      },
+      {
+        component:  <Result
+                      success={this.getResult()}
+                    />,
+        header: '',
+        color: 'purple'
       }
     ]
     return (
@@ -156,9 +168,13 @@ class FormContainer extends Component {
         : null}
           <Form>
             {views[activeView].component}
-            <Button floated='left' onClick={onSave}>Save</Button>
-            <Button floated='right' onClick={this.handleNextClick}>{views[activeView].button}</Button>
-            {activeView !== 0 ? <Button floated='right' onClick={onBack}>Back</Button> : null}
+            {activeView !== 5 ?
+              <div>
+                <Button floated='left' onClick={onSave}>Save</Button>
+                <Button floated='right' onClick={this.handleNextClick}>{views[activeView].button}</Button>
+                {activeView !== 0 ? <Button floated='right' onClick={onBack}>Back</Button> : null}
+              </div>
+            : null}
           </Form>
         </Card.Content>
       </Card>

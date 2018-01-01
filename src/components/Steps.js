@@ -39,7 +39,7 @@ class Steps extends React.Component {
       {
         mobile: '5',
         desktop: 'Documents Upload'
-      },
+      }
     ]
 
     return (
