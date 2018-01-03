@@ -6,6 +6,7 @@ import EmploymentInfo from './EmploymentInfo';
 import AccountInfo from './AccountInfo';
 import DocumentsUpload from './DocumentsUpload';
 import Result from './Result';
+import Steps from './Steps';
 import './FormContainer.css';
 
 class FormContainer extends Component {
@@ -158,28 +159,34 @@ class FormContainer extends Component {
     ]
     return (
       <Card className='c-FormContainer' color={views[activeView].color} fluid>
-        <Card.Content>
-        <Card.Header>{views[activeView].header}</Card.Header>
-        {this.state.showError ?
+        <Card.Content className='c-FormContainer__content'>
+        {this.renderSteps()}
+          {this.state.showError ?
           <Message
+            className='c-FormContainer__error-msg'
             error
+            size='tiny'
             header='Please fill in all the required fileds'
           />
-        : null}
-          <Form>
-            {views[activeView].component}
+          : null}
+          <Form className='c-FormContainer__form'>
+            <h3 className='c-FormContainer__header'>{views[activeView].header}</h3>
+            <div>
+              {views[activeView].component}
+            </div>
             {activeView !== 5 ?
-              <div>
-                <Button floated='left' onClick={onSave}>Save</Button>
-                <Button floated='right' onClick={this.handleNextClick}>{views[activeView].button}</Button>
-                {activeView !== 0 ? <Button floated='right' onClick={onBack}>Back</Button> : null}
-              </div>
+            <div className='c-FormContainer__buttons'>
+              <Button floated='left' size='tiny' onClick={onSave}>Save</Button>
+              <Button floated='right' size='tiny' onClick={this.handleNextClick}>{views[activeView].button}</Button>
+              {activeView !== 0 ? <Button floated='right' size='tiny' onClick={onBack}>Back</Button> : null}
+            </div>
             : null}
           </Form>
         </Card.Content>
       </Card>
     );
   }
+  renderSteps = () => this.props.activeView !== 5 ? <Steps activeView={this.props.activeView}/> : null
 }
 
 export default FormContainer;

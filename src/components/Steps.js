@@ -43,7 +43,7 @@ class Steps extends React.Component {
     ]
 
     return (
-      <Step.Group unstackable size='tiny'>
+      <Step.Group unstackable size='mini'>
         {steps.map((step, i) => (
           <Step
             key={i}

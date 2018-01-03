@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FormContainer from './components/FormContainer'
 import Logo from './components/Logo'
-import Steps from './components/Steps'
 import './App.css';
 
 const initialModel = {
@@ -46,7 +45,6 @@ class App extends Component {
             <Logo/>
             <h1 className='c-App__title'>Personal Account Application</h1>
           </header>
-          {this.renderSteps()}
           <FormContainer
             onSave={this.handleSaveClick}
             onNext={this.handleNext}
@@ -60,7 +58,6 @@ class App extends Component {
       </div>
     );
   }
-  renderSteps = () => this.state.activeView !== 5 ? <Steps activeView={this.state.activeView}/> : null
 }
 
 export default App;
