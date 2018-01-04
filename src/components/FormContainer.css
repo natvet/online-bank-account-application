@@ -11,12 +11,13 @@
     min-height: 30vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    max-width: 820px;
-    margin: 0 auto; }
+    justify-content: space-between; }
     @media all and (min-width: 48em) {
       .c-FormContainer__form.ui.form {
         text-align: left; } }
+  .c-FormContainer__form.ui.form, .c-FormContainer__msg.ui.message {
+    max-width: 820px;
+    margin: 0 auto; }
   .c-FormContainer__header {
     color: #006494;
     margin-bottom: 10px;

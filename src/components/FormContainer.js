@@ -202,7 +202,7 @@ class FormContainer extends Component {
           : null}
           {this.state.showError ?
           <Message
-            className='c-FormContainer__error-msg'
+            className='c-FormContainer__msg'
             error
             size='tiny'
             header='Please fill in required fileds with the correct data'
