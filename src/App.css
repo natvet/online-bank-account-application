@@ -7,7 +7,7 @@
     .c-App {
       text-align: left; } }
   .c-App__container {
-    max-width: 1200px;
+    max-width: 980px;
     margin: 0 auto;
     padding: 20px 10px; }
     @media all and (min-width: 48em) {

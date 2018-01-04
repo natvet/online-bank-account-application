@@ -1,7 +1,7 @@
 import React from 'react'
 import { Step } from 'semantic-ui-react'
 
-const mediaQueryList = window.matchMedia("(min-width: 865px)");
+const mediaQueryList = window.matchMedia("(min-width: 889px)");
 
 class Steps extends React.Component {
 

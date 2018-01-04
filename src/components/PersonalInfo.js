@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Dropdown } from 'semantic-ui-react';
 import { codes } from '../data/dialCodes';
+import './PersonalInfo.css';
 
 const options = [
   { key: '1', text: 'Mr.', value: '1' },
@@ -17,6 +18,7 @@ class PersonalInfo extends Component {
       <div className='c-PersonalInfo'>
         <Form.Group widths='equal'>
           <Form.Select
+            className='c-PersonalInfo__title'
             label='Title'
             name='title'
             options={options}
