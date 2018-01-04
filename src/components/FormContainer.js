@@ -190,7 +190,7 @@ class FormContainer extends Component {
     const buttonSize = this.state.isMobile ? 'tiny' : 'medium'
     return (
       <Card className='c-FormContainer' color={views[activeView].color} fluid>
-        <Card.Content className='c-FormContainer__content'>
+        <Card.Content>
         {this.renderSteps()}
           {this.props.showSaved ?
             <Message
