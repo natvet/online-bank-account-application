@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Dropdown } from 'semantic-ui-react';
+import { codes } from '../data/dialCodes';
+import './PersonalInfo.css';
 
 const options = [
   { key: '1', text: 'Mr.', value: '1' },
@@ -13,7 +15,7 @@ class PersonalInfo extends Component {
 
   render() {
     return (
-      <div>
+      <div className='c-PersonalInfo'>
         <Form.Group widths='equal'>
           <Form.Select
             label='Title'
@@ -35,7 +37,7 @@ class PersonalInfo extends Component {
           <Form.Input
             label='Middle name'
             name='middleName'
-            placeholder='middle name'
+            placeholder='Middle name'
             value={this.props.middleName}
             onChange={this.handleInputChange}
           />
@@ -50,13 +52,17 @@ class PersonalInfo extends Component {
         </Form.Group>
         <Form.Group widths='equal'>
           <Form.Input
+            className='c-PersonalInfo__input'
             label='Home Phone'
             name='homePhone'
             placeholder='Home Phone'
             value={this.props.homePhone}
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.homePhone}
-          />
+          >
+            <Dropdown className='c-PersonalInfo__code' search selection options={codes}/>
+            <input/>
+          </Form.Input>
           <Form.Input
             label='Mobile Phone'
             name='mobilePhone'
@@ -64,7 +70,10 @@ class PersonalInfo extends Component {
             value={this.props.mobilePhone}
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.mobilePhone}
-          />
+          >
+            <Dropdown className='c-PersonalInfo__code' search selection options={codes}/>
+            <input/>
+          </Form.Input>
           <Form.Input
             label='Email address'
             name='emailAddress'

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Dropdown } from 'semantic-ui-react';
+import { codes } from '../data/dialCodes';
 
 class EmploymentInfo extends Component {
 
@@ -32,7 +33,10 @@ class EmploymentInfo extends Component {
             value={this.props.workPhone}
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.workPhone}
-          />
+          >
+            <Dropdown className='c-PersonalInfo__code' search selection options={codes}/>
+            <input/>
+          </Form.Input>
           <Form.Input
             label='Job Position'
             name='jobPosition'
