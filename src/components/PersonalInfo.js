@@ -57,6 +57,7 @@ class PersonalInfo extends Component {
             value={this.props.homePhone}
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.homePhone}
+            type='number'
           >
             <Dropdown
               className='c-dial-code'
@@ -77,6 +78,7 @@ class PersonalInfo extends Component {
             value={this.props.mobilePhone}
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.mobilePhone}
+            type='number'
           >
             <Dropdown
               className='c-dial-code'
@@ -93,7 +95,6 @@ class PersonalInfo extends Component {
           <Form.Input
             label='Email address'
             name='emailAddress'
-            type='email'
             placeholder='Email address'
             value={this.props.emailAddress}
             onChange={this.handleInputChange}

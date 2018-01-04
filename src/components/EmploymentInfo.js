@@ -33,6 +33,7 @@ class EmploymentInfo extends Component {
             value={this.props.workPhone}
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.workPhone}
+            type='number'
           >
             <Dropdown
               className='c-dial-code'
@@ -42,7 +43,6 @@ class EmploymentInfo extends Component {
               name='workPhoneCode'
               value={this.props.workPhoneCode}
               onChange={this.handleInputChange}
-              options={codes}
               error={this.props.showError && !this.props.workPhoneCode}
             />
             <input/>

@@ -29,6 +29,7 @@ class FormContainer extends Component {
   handleBackClick = () => this.props.onBack()
   isTermsConsentValid = () => this.props.terms
   isPersonalInfoValid = () => (
+      this.isEmailValid() &&
       this.props.title &&
       this.props.firstName &&
       this.props.lastName &&
@@ -36,7 +37,6 @@ class FormContainer extends Component {
       this.props.homePhoneCode &&
       this.props.mobilePhone &&
       this.props.mobilePhoneCode &&
-      this.props.emailAddress &&
       this.props.address &&
       this.props.ssn
     )
@@ -57,6 +57,10 @@ class FormContainer extends Component {
     this.props.utilityBill &&
     this.props.securityNumber
   )
+  isEmailValid = () => {
+    const test = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return test.test(this.props.emailAddress) && this.props.emailAddress
+  }
   getResult = () => Math.random() >= 0.5
 
   render() {
