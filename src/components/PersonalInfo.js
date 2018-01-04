@@ -98,7 +98,7 @@ class PersonalInfo extends Component {
             placeholder='Email address'
             value={this.props.emailAddress}
             onChange={this.handleInputChange}
-            error={this.props.showError && !this.props.emailAddress}
+            error={this.props.showError && !this.props.isEmailValid()}
           />
         </Form.Group>
         <Form.Input

@@ -120,6 +120,7 @@ class FormContainer extends Component {
                       address={address}
                       ssn={ssn}
                       showError={this.state.showError}
+                      isEmailValid={this.isEmailValid}
                     />,
         header: 'Personal Information',
         button: 'Next',
@@ -188,7 +189,7 @@ class FormContainer extends Component {
             className='c-FormContainer__error-msg'
             error
             size='tiny'
-            header='Please fill in all the required fileds'
+            header='Please fill in required fileds with the appropriate data'
           />
           : null}
           <Form className='c-FormContainer__form'>

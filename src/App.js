@@ -31,7 +31,7 @@ class App extends Component {
 
   componentWillMount = () => {
     const updatedState = JSON.parse(localStorage.getItem('progress')) || initialModel
-    this.setState({...updatedState})
+    this.setState({...updatedState, showSaved: false})
   }
 
   handleSaveClick = () => {
