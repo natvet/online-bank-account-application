@@ -34,7 +34,17 @@ class EmploymentInfo extends Component {
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.workPhone}
           >
-            <Dropdown className='c-PersonalInfo__code' search selection options={codes}/>
+            <Dropdown
+              className='c-dial-code'
+              search
+              selection
+              options={codes}
+              name='workPhoneCode'
+              value={this.props.workPhoneCode}
+              onChange={this.handleInputChange}
+              options={codes}
+              error={this.props.showError && !this.props.workPhoneCode}
+            />
             <input/>
           </Form.Input>
           <Form.Input

@@ -21,7 +21,10 @@ const initialModel = {
   type: '',
   purpose: '',
   source: '',
-  whereFrom: ''
+  whereFrom: '',
+  homePhoneCode: '',
+  mobilePhoneCode: '',
+  workPhoneCode: ''
 }
 
 class App extends Component {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Dropdown } from 'semantic-ui-react';
 import { codes } from '../data/dialCodes';
-import './PersonalInfo.css';
 
 const options = [
   { key: '1', text: 'Mr.', value: '1' },
@@ -52,7 +51,6 @@ class PersonalInfo extends Component {
         </Form.Group>
         <Form.Group widths='equal'>
           <Form.Input
-            className='c-PersonalInfo__input'
             label='Home Phone'
             name='homePhone'
             placeholder='Home Phone'
@@ -60,7 +58,16 @@ class PersonalInfo extends Component {
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.homePhone}
           >
-            <Dropdown className='c-PersonalInfo__code' search selection options={codes}/>
+            <Dropdown
+              className='c-dial-code'
+              search
+              selection
+              name='homePhoneCode'
+              value={this.props.homePhoneCode}
+              onChange={this.handleInputChange}
+              options={codes}
+              error={this.props.showError && !this.props.homePhoneCode}
+            />
             <input/>
           </Form.Input>
           <Form.Input
@@ -71,7 +78,16 @@ class PersonalInfo extends Component {
             onChange={this.handleInputChange}
             error={this.props.showError && !this.props.mobilePhone}
           >
-            <Dropdown className='c-PersonalInfo__code' search selection options={codes}/>
+            <Dropdown
+              className='c-dial-code'
+              search
+              selection
+              name='mobilePhoneCode'
+              value={this.props.mobilePhoneCode}
+              onChange={this.handleInputChange}
+              options={codes}
+              error={this.props.showError && !this.props.mobilePhoneCode}
+            />
             <input/>
           </Form.Input>
           <Form.Input

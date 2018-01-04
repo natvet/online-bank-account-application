@@ -17,3 +17,6 @@
     font-size: 1.3rem;
     color: #ffffff;
     font-weight: 400; }
+
+.c-dial-code.ui.search.dropdown {
+  min-width: 65px; }
