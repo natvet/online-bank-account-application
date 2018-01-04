@@ -31,11 +31,15 @@ class App extends Component {
     this.setState({...updatedState})
   }
 
-  handleSaveClick = () => localStorage.setItem('progress', JSON.stringify(this.state))
-  handleInputChange = (name, value) => this.setState({[name]: value})
-  handleCheckboxChange = (name) => this.setState({[name]: !this.state[name]})
-  handleNext = () => this.setState({activeView: this.state.activeView + 1})
-  handleBack = () => this.setState({activeView: this.state.activeView - 1})
+  handleSaveClick = () => {
+    localStorage.setItem('progress', JSON.stringify(this.state))
+    this.setState({showSaved: true})
+    window.scrollTo(0,0)
+  }
+  handleInputChange = (name, value) => this.setState({[name]: value, showSaved: false})
+  handleCheckboxChange = (name) => this.setState({[name]: !this.state[name], showSaved: false})
+  handleNext = () => this.setState({activeView: this.state.activeView + 1, showSaved: false})
+  handleBack = () => this.setState({activeView: this.state.activeView - 1, showSaved: false})
 
   render() {
     return (
@@ -47,6 +51,7 @@ class App extends Component {
           </header>
           <FormContainer
             onSave={this.handleSaveClick}
+            showSaved={this.state.showSaved}
             onNext={this.handleNext}
             onBack={this.handleBack}
             activeView={this.state.activeView}

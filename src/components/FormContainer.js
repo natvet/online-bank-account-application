@@ -23,6 +23,7 @@ class FormContainer extends Component {
       this.setState({showError: false})
     } else {
       this.setState({showError: true})
+      window.scrollTo(0,0)
     }
   }
   handleBackClick = () => this.props.onBack()
@@ -161,6 +162,14 @@ class FormContainer extends Component {
       <Card className='c-FormContainer' color={views[activeView].color} fluid>
         <Card.Content className='c-FormContainer__content'>
         {this.renderSteps()}
+          {this.props.showSaved ?
+            <Message
+              className='c-FormContainer__msg'
+              success
+              size='tiny'
+              header='Your answers have been saved'
+            />
+          : null}
           {this.state.showError ?
           <Message
             className='c-FormContainer__error-msg'

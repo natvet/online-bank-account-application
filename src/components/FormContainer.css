@@ -1,4 +1,5 @@
 .c-FormContainer {
+  text-align: center;
   max-width: 55em;
   margin: 0 auto; }
   .c-FormContainer__buttons {
@@ -12,5 +13,5 @@
     color: #006494;
     margin-bottom: 10px;
     line-height: 1; }
-  .c-FormContainer__error-msg.ui.message {
+  .c-FormContainer__msg.ui.message {
     margin-top: 0; }
