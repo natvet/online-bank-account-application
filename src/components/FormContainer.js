@@ -9,8 +9,23 @@ import Result from './Result';
 import Steps from './Steps';
 import './FormContainer.css';
 
+const mediaQueryList = window.matchMedia("(min-width: 889px)");
+
 class FormContainer extends Component {
   state={}
+
+  componentWillMount() {
+    mediaQueryList.matches ? this.setState({isMobile: false}) : this.setState({isMobile: true})
+    mediaQueryList.addListener(this.handleViewportChange)
+  }
+
+  componentWillUnmount() {
+    mediaQueryList.removeListener(this.handleViewportChange)
+  }
+
+  handleViewportChange = (event) => {
+    event.matches ? this.setState({isMobile: false}) : this.setState({isMobile: true})
+  }
 
   handleNextClick = () => {
     const { activeView } = this.props
@@ -172,6 +187,7 @@ class FormContainer extends Component {
         color: 'purple'
       }
     ]
+    const buttonSize = this.state.isMobile ? 'tiny' : 'medium'
     return (
       <Card className='c-FormContainer' color={views[activeView].color} fluid>
         <Card.Content className='c-FormContainer__content'>
@@ -189,7 +205,7 @@ class FormContainer extends Component {
             className='c-FormContainer__error-msg'
             error
             size='tiny'
-            header='Please fill in required fileds with the appropriate data'
+            header='Please fill in required fileds with the correct data'
           />
           : null}
           <Form className='c-FormContainer__form'>
@@ -199,9 +215,9 @@ class FormContainer extends Component {
             </div>
             {activeView !== 5 ?
             <div className='c-FormContainer__buttons'>
-              <Button floated='left' size='tiny' onClick={onSave}>Save</Button>
-              <Button floated='right' size='tiny' onClick={this.handleNextClick}>{views[activeView].button}</Button>
-              {activeView !== 0 ? <Button floated='right' size='tiny' onClick={onBack}>Back</Button> : null}
+              <Button floated='left' size={buttonSize} onClick={onSave}>Save</Button>
+              <Button floated='right' size={buttonSize} primary onClick={this.handleNextClick}>{views[activeView].button}</Button>
+              {activeView !== 0 ? <Button floated='right' size={buttonSize} onClick={onBack}>Back</Button> : null}
             </div>
             : null}
           </Form>

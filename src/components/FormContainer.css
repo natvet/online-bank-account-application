@@ -4,6 +4,9 @@
   margin: 0 auto; }
   .c-FormContainer__buttons {
     margin-top: 10px; }
+    @media all and (min-width: 48em) {
+      .c-FormContainer__buttons {
+        margin-top: 20px; } }
   .c-FormContainer__form {
     min-height: 30vh;
     display: flex;

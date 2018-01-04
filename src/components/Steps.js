@@ -26,7 +26,7 @@ class Steps extends React.Component {
       },
       {
         mobile: '2',
-        desktop: 'Perosnal Information'
+        desktop: 'Personal Information'
       },
       {
         mobile: '3',
