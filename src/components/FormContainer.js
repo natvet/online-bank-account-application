@@ -41,7 +41,10 @@ class FormContainer extends Component {
       window.scrollTo(0,0)
     }
   }
-  handleBackClick = () => this.props.onBack()
+  handleBackClick = () => {
+    this.props.onBack()
+    this.setState({showError: false})
+  }
   isTermsConsentValid = () => this.props.terms
   isPersonalInfoValid = () => (
       this.isEmailValid() &&
