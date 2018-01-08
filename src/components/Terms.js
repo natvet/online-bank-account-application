@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
+import file from '../assets/t&c.txt'
 import './Terms.css';
 
 class Terms extends Component {
@@ -10,13 +11,13 @@ class Terms extends Component {
     return (
       <div className='c-Terms'>
         <Form.Checkbox
-          className='c-Terms__checkbox'
           label='I agree to the Terms and Conditions'
           name='terms'
           checked={this.props.terms}
           onChange={this.handleInputChange}
           error={this.props.showError && !this.props.terms}
         />
+        <a href={file} download>Download Terms and Conditions text</a>
       </div>
     );
   }
