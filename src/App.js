@@ -24,7 +24,8 @@ const initialModel = {
   whereFrom: '',
   homePhoneCode: '',
   mobilePhoneCode: '',
-  workPhoneCode: ''
+  workPhoneCode: '',
+  completedStep: 0
 }
 
 class App extends Component {
@@ -41,8 +42,16 @@ class App extends Component {
   }
   handleInputChange = (name, value) => this.setState({[name]: value, showSaved: false})
   handleCheckboxChange = (name) => this.setState({[name]: !this.state[name], showSaved: false})
-  handleNext = () => this.setState({activeView: this.state.activeView + 1, showSaved: false})
+  handleNext = () => {
+    const completedStep = this.state.completedStep === this.state.activeView ? this.state.completedStep + 1 : this.state.completedStep
+    this.setState({activeView: this.state.activeView + 1, showSaved: false, completedStep})
+  }
   handleBack = () => this.setState({activeView: this.state.activeView - 1, showSaved: false})
+  handleStepClick = (i) => {
+    if(i <= this.state.completedStep) {
+      this.setState({activeView: i})
+    }
+  }
 
   render() {
     return (
@@ -58,8 +67,10 @@ class App extends Component {
             onNext={this.handleNext}
             onBack={this.handleBack}
             activeView={this.state.activeView}
+            completedStep={this.state.completedStep}
             onInputChange={this.handleInputChange}
             onCheckboxChange={this.handleCheckboxChange}
+            onStepClick={this.handleStepClick}
             {...this.state}
           />
         </div>

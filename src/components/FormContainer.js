@@ -228,7 +228,17 @@ class FormContainer extends Component {
       </Card>
     );
   }
-  renderSteps = () => this.props.activeView !== 5 ? <Steps activeView={this.props.activeView}/> : null
+  renderSteps = () => {
+    if(this.props.activeView !== 5) {
+      return (
+        <Steps
+          activeView={this.props.activeView}
+          onStepClick={this.props.onStepClick}
+          completedStep={this.props.completedStep}
+        />
+      )
+    }
+  }
 }
 
 export default FormContainer;

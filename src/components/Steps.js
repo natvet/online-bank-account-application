@@ -48,6 +48,8 @@ class Steps extends React.Component {
           <Step
             key={i}
             active={this.props.activeView === i}
+            onClick={this.props.onStepClick.bind(this, i)}
+            disabled={this.props.completedStep < i}
           >
             <Step.Content>
               <Step.Title>{this.state.isMobile ? step.mobile : step.desktop}</Step.Title>
