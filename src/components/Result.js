@@ -11,7 +11,7 @@ class Result extends Component {
     return (
       <div className='c-Result'>
         <Header icon>
-          {this.props.success ? <Icon name='check circle' color='purple'/> : null}
+          <Icon name={this.props.success ? 'check circle' : 'remove circle'} color='purple'/>
           Thank you for your application!
         </Header>
         {this.renderResult()}
